@@ -6,14 +6,13 @@ vars:
 
   domain_name: "%{hiera('domain_name')}"
 
-  service_desired_count: 3
+  service_desired_count: 1
 
   secrets_bucket_name: "%{hiera('secrets_bucket_name')}"
 
   vault_image: "infrablocks/vault-aws:0.1.0-rc.11"
   vault_service_container_port: "8200"
   vault_service_host_port: "8200"
-  vault_service_lb_port: "8200"
   vault_allow_cidrs:
     - "0.0.0.0/0"
 

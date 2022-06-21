@@ -9,6 +9,15 @@ RakeTerraform.define_installation_tasks(
     path: File.join(Dir.pwd, 'vendor', 'terraform'),
     version: '1.1.7')
 
+namespace :keys do
+  namespace :cluster do
+    RakeSSH.define_key_tasks(
+      path: 'config/secrets/cluster/',
+      comment: 'maintainers@infrablocks.io'
+    )
+  end
+end
+
 namespace :bootstrap do
   RakeTerraform.define_command_tasks(
       configuration_name: 'bootstrap',

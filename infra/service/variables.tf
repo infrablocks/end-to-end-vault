@@ -11,7 +11,6 @@ variable "secrets_bucket_name" {}
 variable "vault_image" {}
 variable "vault_service_container_port" {}
 variable "vault_service_host_port" {}
-variable "vault_service_lb_port" {}
 variable "vault_allow_cidrs" {
   type = list(string)
 }

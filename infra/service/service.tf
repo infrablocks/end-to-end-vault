@@ -11,7 +11,7 @@ locals {
 
 module "vault_service" {
   source  = "infrablocks/ecs-service/aws"
-  version = "4.1.0"
+  version = "4.2.0-rc.7"
 
   component             = var.component
   deployment_identifier = var.deployment_identifier
