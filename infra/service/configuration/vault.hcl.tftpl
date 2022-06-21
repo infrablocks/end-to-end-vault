@@ -5,5 +5,9 @@ listener "tcp" {
   tls_disable = 1
 }
 
+seal "awskms" {
+  kms_key_id = "${kms_key}"
+}
+
 disable_mlock = true
 ui = true

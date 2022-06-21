@@ -1,6 +1,6 @@
 locals {
   vault_task_container_definitions = templatefile(
-    "${path.root}/container-definitions/vault.json.tpl",
+    "${path.root}/container-definitions/vault.json.tftpl",
     {
       env_file_object_path = local.env_file_object_path
       container_port       = var.vault_service_container_port
@@ -24,6 +24,8 @@ module "vault_service" {
   service_name  = var.component
   service_image = var.vault_image
   service_port  = var.vault_service_container_port
+
+  service_role = aws_iam_role.vault_role.arn
 
   service_desired_count                      = var.service_desired_count
   service_deployment_maximum_percent         = 200
