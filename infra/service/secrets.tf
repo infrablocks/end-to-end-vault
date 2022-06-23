@@ -9,8 +9,10 @@ locals {
     vault_dns_name = local.vault_dns_name
     vault_configuration_file_object_path = local.configuration_file_object_path
   })
+  postgres_connection_url = "postgres://${var.database_master_user}:${var.database_master_user_password}@${data.terraform_remote_state.database.outputs.postgres_database_host}:${data.terraform_remote_state.database.outputs.postgres_database_port}/${var.database_name}"
   configuration_file_contents = templatefile("${path.root}/configuration/vault.hcl.tftpl", {
-    kms_key = aws_kms_key.vault_unseal_key.id
+    kms_key = aws_kms_key.vault_unseal_key.id,
+    postgres_connection_url = local.postgres_connection_url
   })
 }
 

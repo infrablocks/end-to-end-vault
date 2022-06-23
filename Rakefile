@@ -91,6 +91,54 @@ namespace :network do
   end
 end
 
+namespace :bastion do
+  RakeTerraform.define_command_tasks(
+    configuration_name: 'bastion',
+    argument_names: [:deployment_identifier]
+  ) do |t, args|
+    configuration = configuration
+                      .for_scope(args.to_h.merge(role: 'bastion'))
+
+    t.source_directory = 'infra/bastion'
+    t.work_directory = 'build'
+
+    t.backend_config = configuration.backend_config
+    t.vars = configuration.vars
+  end
+end
+
+namespace :database do
+  RakeTerraform.define_command_tasks(
+    configuration_name: 'database',
+    argument_names: [:deployment_identifier]
+  ) do |t, args|
+    configuration = configuration
+                      .for_scope(args.to_h.merge(role: 'database'))
+
+    t.source_directory = 'infra/database'
+    t.work_directory = 'build'
+
+    t.backend_config = configuration.backend_config
+    t.vars = configuration.vars
+  end
+end
+
+namespace :database_migrations do
+  RakeTerraform.define_command_tasks(
+    configuration_name: 'database_migrations',
+    argument_names: [:deployment_identifier]
+  ) do |t, args|
+    configuration = configuration
+                      .for_scope(args.to_h.merge(role: 'database_migrations'))
+
+    t.source_directory = 'infra/database_migrations'
+    t.work_directory = 'build'
+
+    t.backend_config = configuration.backend_config
+    t.vars = configuration.vars
+  end
+end
+
 namespace :cluster do
   RakeTerraform.define_command_tasks(
       configuration_name: 'cluster',

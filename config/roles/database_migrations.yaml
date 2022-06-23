@@ -1,0 +1,18 @@
+---
+vars:
+  region: "%{hiera('region')}"
+
+  database_name: "%{hiera('database_name')}"
+  database_master_user: "%{hiera('database_master_user')}"
+  database_master_user_password: "%{hiera('database_master_user_password')}"
+
+  database_state_bucket_name: "%{hiera('database_state_bucket_name')}"
+  database_state_key: "%{hiera('database_state_key')}"
+  database_state_bucket_region: "%{hiera('database_state_bucket_region')}"
+  database_state_bucket_is_encrypted: "%{hiera('database_state_bucket_is_encrypted')}"
+
+backend_config:
+  region: "%{hiera('database_migrations_state_bucket_region')}"
+  bucket: "%{hiera('database_migrations_state_bucket_name')}"
+  encrypt: "%{hiera('database_migrations_state_bucket_is_encrypted')}"
+  key: "%{hiera('database_migrations_state_key')}"

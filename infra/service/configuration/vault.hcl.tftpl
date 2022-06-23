@@ -1,4 +1,6 @@
-storage "inmem" {}
+storage "postgresql" {
+  connection_url = "${postgres_connection_url}"
+}
 
 listener "tcp" {
   address = "0.0.0.0:8200"
