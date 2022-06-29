@@ -1,0 +1,12 @@
+---
+vars:
+  service_state_bucket_name: "%{hiera('service_state_bucket_name')}"
+  service_state_key: "%{hiera('service_state_key')}"
+  service_state_bucket_region: "%{hiera('service_state_bucket_region')}"
+  service_state_bucket_is_encrypted: "%{hiera('service_state_bucket_is_encrypted')}"
+
+backend_config:
+  region: "%{hiera('approle_state_bucket_region')}"
+  bucket: "%{hiera('approle_state_bucket_name')}"
+  encrypt: "%{hiera('approle_state_bucket_is_encrypted')}"
+  key: "%{hiera('approle_state_key')}"
